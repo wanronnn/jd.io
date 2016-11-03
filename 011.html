@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            function getClass(classname){
+                // 判断是否支持getElementsByClassName
+
+                if(document.getElementsByClassName){
+                    return document.getElementsByClassName(classname);
+                }
+                var arr =[];
+                var dom = document.getElementsByTagName("*");
+                for(var i=0;i<dom.length;i++){
+                    // 把多个类名转化为数组
+                    var txtarr = dom[i].className.split(" ");
+                    for(var j=0;j<txtarr.length;j++){
+                        if(txtarr[j]==classname){
+                            arr.push(dom[i]);
+                        }
+                    }
+                }
+                return arr;
+            }
+            console.log(getClass("test".length));
+        }
+    </script>
+</head>
+<body>
+<div></div>
+<div class="demo"></div>
+<div class="test"></div>
+<div></div>
+<div class="demo test one"></div>
+<div class="demo"></div>
+<div class="test demo"></div>
+<div class="demo"></div>
+<div></div>
+<div></div>
+</body>
+</html>
